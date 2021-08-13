@@ -313,6 +313,7 @@ class Sell(tk.Toplevel):
         self.default_values()
 
     def init_sell(self):
+        ''' окно продажи товара '''
         self.title('Продать')
         self.geometry('400x300+400+300')
         self.resizable(False, False)
@@ -341,6 +342,7 @@ class Sell(tk.Toplevel):
                                                                              self.entry_sell_price.get()))
 
     def default_values(self):
+        ''' значения по умолчанию'''
         self.db.c.execute('''SELECT * FROM data WHERE id=?''',(self.view.tree.set(self.view.tree.selection()[0], '#1'),))
         row = self.db.c.fetchone()
         self.entry_description.insert(0,row[1])
@@ -352,6 +354,7 @@ class Search(tk.Toplevel):
         self.view = app
 
     def init_search(self):
+        ''' окно поиска '''
         self.title('Поиск')
         self.geometry('300x100+400+300')
         self.resizable(False, False)
@@ -398,7 +401,7 @@ if __name__ =='__main__':
     db = DB()
     app = Main(root)
     app.pack()
-    root.title('Бухсчет 1.04 ')
+    root.title('Бухсчет 1.04')
     root.geometry('1470x410+300+200')
     root.resizable(False, False)
     root.mainloop()
